@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Flask Weather</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='style.css') }}"
+        />
+    </head>
+    <body>
+        <div class="weather-container">
+            <h1 class="weather-heading">Flask Weather</h1>
+            <form action="" method="post">
+                <div class="input-group">
+                    <input
+                        type="text"
+                        id="cityName"
+                        name="cityName"
+                        placeholder="City"
+                        class="weather-input"
+                    />
+                </div>
+                <div class="input-group">
+                    <input
+                        type="text"
+                        name="stateName"
+                        id="stateName"
+                        placeholder="State (optional)"
+                        class="weather-input"
+                    />
+                </div>
+                <div class="input-group">
+                    <input
+                        type="text"
+                        name="countryName"
+                        id="countryName"
+                        placeholder="Country (optional)"
+                        class="weather-input"
+                    />
+                </div>
+
+                <button type="submit">Get Data</button>
+            </form>
+
+            {% if data %} {{ data.main }}: {{ data.description }}
+            <br />
+            <img
+                src="https://openweathermap.org/img/wn/{{ data.icon }}@2x.png"
+                alt="weather icon"
+            />
+            <br />
+            <span class="weather-data">{{ data.temperature }} C</span> {% endif
+            %}
+        </div>
+    </body>
+</html>
